@@ -6,6 +6,7 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 static char *font = "Inconsolata-g:size=9:antialias=true:autohint=true";
+static char *font2[] = { "Joypixels:size=9:atialias=true" };
 static int borderpx = 2;
 
 /*
