@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "DejaVu Sans Mono:size=9:antialias=true:autohint=true";
+static char *font = "Liberation Mono:style=Regular:size=10:antialias=true:autohint=true";
 static char *font2[] = { "Joypixels:size=9:antialias=true", "Font Awesome 5 Free:size=9:antialias=true" };
 static int borderpx = 2;
 
@@ -94,35 +94,35 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
-float alpha = 0.75;
+float alpha = 1.0;
 
-#include </home/lrossi/.cache/wal/colors-wal-st.h>
+//#include </home/lrossi/.cache/wal/colors-wal-st.h>
 
 /* Terminal colors (16 first used in escape sequence) */
 /*
 static const char *colorname[] = {
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
+	"#3b4252",
+	"#bf616a",
+	"#a3be8c",
+	"#ebcb8b",
+	"#81a1c1",
+	"#b48ead",
+	"#77c0d0",
+	"#e559f0",
 
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
+	"#4c566a",
+	"#bf616a",
+	"#a3be8c",
+	"#ebcb8b",
+	"#81a1c1",
+	"#b48ead",
+	"#8fbcbb",
+	"#eceff4",
 
 	[255] = 0,
 
-	"#cccccc",
-	"#555555",
+	"#2e3440",
+	"#d8dee9",
 };
 
 
@@ -131,6 +131,44 @@ unsigned int defaultbg = 0;
 static unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
 */
+
+static const char *colorname[] = {
+
+    [0] = "#3b4252", // black 
+    [1] = "#bf616a", // red     
+    [2] = "#a3be8c", // green   
+    [3] = "#ebcb8b", // yellow  
+    [4] = "#81a1c1", // blue    
+    [5] = "#b48ead", // magenta 
+    [6] = "#88c0d0", // cyan    
+    [7] = "#e5e9f0", // white   
+
+    [8]  = "#4c566a", // black   
+    [9]  = "#bf616a", // red     
+    [10] = "#a3be8c", // green   
+    [11] = "#ebcb9b", // yellow  
+    [12] = "#81a1c1", // blue    
+    [13] = "#b48ead", // magenta 
+    [14] = "#8fbcbb", // cyan    
+    [15] = "#eceff4", // white   
+
+    [256] = "#2e3440", // background 
+    [257] = "#d8dee9", // foreground 
+};
+
+unsigned int defaultfg = 257;
+unsigned int defaultbg = 256;
+static unsigned int defaultcs = 257;
+static unsigned int defaultrcs = 257;
+
+/*
+ *  * Colors used, when the specific fg == defaultfg. So in reverse mode this
+ *   * will reverse too. Another logic would only make the simple feature too
+ *    * complex.
+ *     */
+//static unsigned int defaultitalic = 7;
+//static unsigned int defaultunderline = 7;
+
 
 /*
  * Default shape of cursor
