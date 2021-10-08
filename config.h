@@ -5,8 +5,13 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:style=Regular:size=10:antialias=true:autohint=true";
-static char *font2[] = { "Joypixels:size=9:antialias=true", "Font Awesome 5 Free:size=9:antialias=true" };
+static char *font = "Liberation Mono:pixelsize=14:antialias=true:autohint=true";
+/* Spare fonts */
+static char *font2[] = {
+/*	"Inconsolata for Powerline:pixelsize=14:antialias=true:autohint=true", */
+/*	"Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true", */
+};
+
 static int borderpx = 2;
 
 /*
@@ -94,81 +99,46 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
-float alpha = 1.0;
+/* bg opacity */
+float alpha = 1;
 
-//#include </home/lrossi/.cache/wal/colors-wal-st.h>
-
-/* Terminal colors (16 first used in escape sequence) */
-/*
+// #include "/home/lrossi/.cache/wal/colors-wal-st.h"
+ /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	"#3b4252",
-	"#bf616a",
-	"#a3be8c",
-	"#ebcb8b",
-	"#81a1c1",
-	"#b48ead",
-	"#77c0d0",
-	"#e559f0",
-
-	"#4c566a",
-	"#bf616a",
-	"#a3be8c",
-	"#ebcb8b",
-	"#81a1c1",
-	"#b48ead",
-	"#8fbcbb",
-	"#eceff4",
-
+	"#282828", /* hard contrast: #1d2021 / soft contrast: #32302f */
+	"#cc241d",
+	"#98971a",
+	"#d79921",
+	"#458588",
+	"#b16286",
+	"#689d6a",
+	"#a89984",
+	"#928374",
+	"#fb4934",
+	"#b8bb26",
+	"#fabd2f",
+	"#83a598",
+	"#d3869b",
+	"#8ec07c",
+	"#ebdbb2",
 	[255] = 0,
-
-	"#2e3440",
-	"#d8dee9",
+	/* more colors can be added after 255 to use with DefaultXX */
+	"#add8e6", /* 256 -> cursor */
+	"#555555", /* 257 -> rev cursor*/
+	"#282828", /* 258 -> bg */
+	"#ebdbb2", /* 259 -> fg */
 };
 
 
-unsigned int defaultfg = 7;
-unsigned int defaultbg = 0;
+
+unsigned int defaultbg = 258;
+unsigned int defaultfg = 259;
+
 static unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
-*/
 
-static const char *colorname[] = {
-
-    [0] = "#3b4252", // black 
-    [1] = "#bf616a", // red     
-    [2] = "#a3be8c", // green   
-    [3] = "#ebcb8b", // yellow  
-    [4] = "#81a1c1", // blue    
-    [5] = "#b48ead", // magenta 
-    [6] = "#88c0d0", // cyan    
-    [7] = "#e5e9f0", // white   
-
-    [8]  = "#4c566a", // black   
-    [9]  = "#bf616a", // red     
-    [10] = "#a3be8c", // green   
-    [11] = "#ebcb9b", // yellow  
-    [12] = "#81a1c1", // blue    
-    [13] = "#b48ead", // magenta 
-    [14] = "#8fbcbb", // cyan    
-    [15] = "#eceff4", // white   
-
-    [256] = "#2e3440", // background 
-    [257] = "#d8dee9", // foreground 
-};
-
-unsigned int defaultfg = 257;
-unsigned int defaultbg = 256;
-static unsigned int defaultcs = 257;
-static unsigned int defaultrcs = 257;
-
-/*
- *  * Colors used, when the specific fg == defaultfg. So in reverse mode this
- *   * will reverse too. Another logic would only make the simple feature too
- *    * complex.
- *     */
-//static unsigned int defaultitalic = 7;
-//static unsigned int defaultunderline = 7;
-
+unsigned int const currentBg = 237, buffSize = 2048;
+unsigned int const highlightBg = 214, highlightFg = 234;
 
 /*
  * Default shape of cursor
@@ -235,10 +205,10 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
+	{ MODKEY,            	XK_k,	     	kscrollup,      {.i = -1} },
+	{ MODKEY,	        XK_j,   kscrolldown,    {.i = -1} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ MODKEY,               XK_k,     kscrollup,      {.i = -1} },
-	{ MODKEY,               XK_j,   kscrolldown,    {.i = -1} },
 };
 
 /*
